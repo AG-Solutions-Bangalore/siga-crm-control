@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Eye, Edit } from "lucide-react";
 
-// Function to retrieve the `usercontrol` data from localStorage
+
 const getUserControlData = () => {
   const userControl = localStorage.getItem("userControl");
   try {
@@ -15,14 +15,14 @@ const getUserControlData = () => {
 
 
 const shouldRenderButton = (buttonName, userType, status) => {
-  const data = getUserControlData(); // Retrieve data dynamically
+  const data = getUserControlData(); 
  
   return data.some((item) => {
-    const userTypes = item.usertype.split(","); // Split the usertype string into an array
+    const userTypes = item.usertype.split(","); 
     return (
       item.button == buttonName &&
-      userTypes.includes(userType) && // Check if the userType matches
-      item.status.toLowerCase() == status.toLowerCase() // Compare status case-insensitively
+      userTypes.includes(userType) && 
+      item.status.toLowerCase() == status.toLowerCase() 
     );
   });
 };
