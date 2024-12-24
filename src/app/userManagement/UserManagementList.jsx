@@ -129,15 +129,34 @@ const UserManagementList = () => {
     },
     
    
+    // {
+    //   accessorKey: "usertype",
+    //   header: "Users",
+    //   cell: ({ row }) => {
+    //     const userTypeValues = row.getValue("usertype")?.split(","); // Split the comma-separated string
+    //     const userTypeLabels = userTypeValues
+    //       .map((value) => userTypeMapping[value.trim()] || "Unknown") // Map each value to its label
+    //       .join(", "); // Join the labels back into a string
+    //     return <div>{userTypeLabels}</div>;
+    //   },
+    // },
     {
       accessorKey: "usertype",
       header: "Users",
       cell: ({ row }) => {
-        const userTypeValues = row.getValue("usertype")?.split(","); // Split the comma-separated string
-        const userTypeLabels = userTypeValues
-          .map((value) => userTypeMapping[value.trim()] || "Unknown") // Map each value to its label
-          .join(", "); // Join the labels back into a string
-        return <div>{userTypeLabels}</div>;
+        const userTypeValue = row.getValue("usertype");
+    
+        // Check if the value exists and is a non-empty string before attempting to split
+        if (userTypeValue && typeof userTypeValue == "string") {
+          const userTypeValues = userTypeValue.split(","); // Split the comma-separated string
+          const userTypeLabels = userTypeValues
+            .map((value) => userTypeMapping[value.trim()] || "Unknown") // Map each value to its label
+            .join(", "); // Join the labels back into a string
+          return <div>{userTypeLabels}</div>;
+        }
+    
+        // Return a fallback if the value is invalid
+        return <div>Unknown</div>;
       },
     },
     {
