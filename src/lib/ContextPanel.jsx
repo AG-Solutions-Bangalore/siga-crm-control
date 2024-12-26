@@ -9,7 +9,7 @@ export const ContextPanel = createContext();
 const AppProvider = ({ children }) => {
   const now = new Date();
   const formattedDate = format(now, "EEEE, MMMM d, yyyy 'at' h:mm a");
-  const [permission, setPermission] = useState([]);
+
   const token = localStorage.getItem("token");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);

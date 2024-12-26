@@ -42,6 +42,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import BASE_URL from '@/config/BaseUrl';
 import { useNavigate } from 'react-router-dom';
+import { PaymentEdit, PaymentView } from '@/components/base/ButtonComponents';
 
 const AmountList = () => {
   const {
@@ -147,14 +148,21 @@ const AmountList = () => {
 
         return (
           <div className='flex flex-row'>
-          <Button
+          {/* <Button
             variant="ghost"
             size="icon"
             onClick = {()=>navigate(`/amount-edit/${registration}`)}
           >
             <Edit className="h-4 w-4" />
-          </Button>
-          <Button
+          </Button> */}
+
+          <PaymentEdit
+          onClick = {()=>navigate(`/amount-edit/${registration}`)}
+          />
+          <PaymentView
+          onClick = {()=>navigate(`/amount-view/${registration}`)}
+          />
+          {/* <Button
             variant="ghost"
             size="icon"
             // onClick={() => {
@@ -164,7 +172,7 @@ const AmountList = () => {
             onClick = {()=>navigate(`/amount-view/${registration}`)}
           >
             <Eye className="h-4 w-4" />
-          </Button>
+          </Button> */}
           </div>
         );
       },

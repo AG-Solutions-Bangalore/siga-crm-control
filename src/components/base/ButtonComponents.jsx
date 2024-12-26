@@ -29,6 +29,7 @@ const shouldRenderButton = (buttonName, userType, status) => {
 
 export const ViewParticipantButton = ({ onClick, className }) => {
   const userType = localStorage.getItem("userType");
+
   if (!shouldRenderButton("ViewParticipantButton", userType, "active"))
     return null;
 
@@ -44,9 +45,10 @@ export const ViewParticipantButton = ({ onClick, className }) => {
     </Button>
   );
 };
-
+ViewParticipantButton.page = "Participant";
 export const EditParticipantButton = ({ onClick, className }) => {
   const userType = localStorage.getItem("userType");
+   
   if (!shouldRenderButton("EditParticipantButton", userType, "active"))
     return null;
 
@@ -62,9 +64,11 @@ export const EditParticipantButton = ({ onClick, className }) => {
     </Button>
   );
 };
+EditParticipantButton.page = "Participant";
 
 export const CreateParticipantButton = ({ onClick, className }) => {
   const userType = localStorage.getItem("userType");
+
   if (!shouldRenderButton("CreateParticipantButton", userType, "active"))
     return null;
 
@@ -78,26 +82,72 @@ export const CreateParticipantButton = ({ onClick, className }) => {
     </Button>
   );
 };
+CreateParticipantButton.page = "Participant";
 
-export const DeleteButton = ({ onClick, className }) => {
+// export const DeleteButton = ({ onClick, className }) => {
+//   const userType = localStorage.getItem("userType");
+
+//   if (!shouldRenderButton("DeleteButton", userType, "active"))
+//     return null;
+
+//   return (
+//     <Button
+//       variant="default"
+//       onClick={onClick}
+//       className={` ${className}`}
+//     >
+//       Delete
+//     </Button>
+//   );
+// };
+// DeleteButton.page = "Registration";
+
+
+export const PaymentEdit = ({ onClick, className }) => {
   const userType = localStorage.getItem("userType");
-  if (!shouldRenderButton("DeleteButton", userType, "active"))
+   
+  if (!shouldRenderButton("PaymentEdit", userType, "active"))
     return null;
 
   return (
     <Button
-      variant="default"
+      variant="ghost"
+      size="icon"
       onClick={onClick}
-      className={` ${className}`}
+      className={className}
+      title="Edit Payment"
     >
-      Delete
+      <Edit className="h-4 w-4" />
     </Button>
   );
 };
 
+PaymentEdit.page = "Payment";
+
+
+export const PaymentView = ({ onClick, className }) => {
+  const userType = localStorage.getItem("userType");
+
+  if (!shouldRenderButton("PaymentView", userType, "active"))
+    return null;
+
+  return (
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={onClick}
+      className={className}
+      title="View Paymnet"
+    >
+      <Eye className="h-4 w-4" />
+    </Button>
+  );
+};
+PaymentView.page = "Payment";
 export default {
   ViewParticipantButton,
   EditParticipantButton,
   CreateParticipantButton,
-  DeleteButton,
+  PaymentEdit,
+  PaymentView,
 };
